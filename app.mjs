@@ -1,0 +1,21 @@
+// 1. npm i 로 작성한 package.json 설치
+// - 실행 : npm run dev
+// 2. 백엔드 구성
+import express from "express";
+import postsRouter from "./router/posts.mjs";
+import authRouter from "./router/auth.mjs";
+
+const app = express();
+
+// json 통신
+app.use(express.json());
+
+app.use("/post", postsRouter);
+app.use("/auth", authRouter);
+
+app.use((req, res, nexxt) => {
+  res.sendStatus(404);
+});
+
+// 포트번호 8080
+app.listen(8080);
