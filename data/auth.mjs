@@ -90,3 +90,9 @@ export async function login(userid, password) {
   );
   return user;
 }
+
+// 회원정보 중복성 체크
+export async function findByUserid(userid) {
+  const user = users.find((user) => user.userid === userid);
+  return user;
+}
