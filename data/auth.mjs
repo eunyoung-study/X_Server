@@ -91,8 +91,13 @@ export async function login(userid, password) {
   return user;
 }
 
-// 회원정보 중복성 체크
+// 회원정보 userid 중복성 체크
 export async function findByUserid(userid) {
   const user = users.find((user) => user.userid === userid);
   return user;
+}
+
+// 회원정보 id 검색
+export async function findById(id) {
+  return users.find((user) => user.id === id);
 }
