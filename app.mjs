@@ -5,6 +5,7 @@ import express from "express";
 import postsRouter from "./router/posts.mjs";
 import authRouter from "./router/auth.mjs";
 import { config } from "./config.mjs";
+import { connectDB } from "./db/database.mjs";
 
 const app = express();
 
@@ -18,5 +19,9 @@ app.use((req, res, nexxt) => {
     res.sendStatus(404);
 });
 
-// 포트번호
-app.listen(config.host.port);
+connectDB()
+    .then(() => {
+        // 포트번호
+        app.listen(config.host.port);
+    })
+    .catch(console.error);
