@@ -31,9 +31,9 @@ export async function singup(req, res, next) {
     });
     // const user = await authRepository.createUser(userid, password, name, email);
 
-    const token = await createJwtToken(user.id);
+    const token = await createJwtToken(user);
     console.log(token);
-    res.status(201).json({ token, user });
+    res.status(201).json({ token, userid });
 }
 
 // 로그인 하는 함수
